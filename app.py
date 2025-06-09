@@ -31,7 +31,7 @@ def index():
 
 @app.route('/download/<filename>')
 def download_file(filename):
-    ad_url = "https://databoilrecommendation.com/uz2vchu6id?key=28565a3b0fd6701ddb0dffa3e9e84cb8"  # Replace with real Adsterra direct link
+    ad_url = "https://databoilrecommendation.com/uz2vchu6id?key=28565a3b0fd6701ddb0dffa3e9e84cb8"  # Replace with your Adsterra direct link
     # Show ad page or redirect via JS
     return render_template("ad_redirect.html", ad_url=ad_url, file_url=url_for('serve_file', filename=filename))
 
@@ -40,4 +40,5 @@ def serve_file(filename):
     return send_file(os.path.join(DOWNLOAD_FOLDER, filename), as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
