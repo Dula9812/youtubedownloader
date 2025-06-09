@@ -1,44 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
     <title>Redirecting...</title>
     <script>
-        function openAdThenFile() {
-            // Open Adsterra link in new tab
+        setTimeout(() => {
             window.open("{{ ad_url }}", "_blank");
-
-            // After small delay, redirect current tab to actual file download
-            setTimeout(function() {
-                window.location.href = "{{ file_url }}";
-            }, 1000); // 1 second delay
-        }
-        window.onload = openAdThenFile;
+            window.location.href = "{{ file_url }}";
+        }, 2000);
     </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #fefefe;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #555;
-            text-align: center;
-        }
-        .message-box {
-            padding: 20px 30px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-    </style>
 </head>
-<body>
-    <div class="message-box">
-        <h2>Please wait...</h2>
-        <p>Opening our sponsor link and preparing your download.</p>
-    </div>
+<body style="text-align:center;">
+    <h2>Preparing your download...</h2>
+    <p>Please wait a moment. Ads support our service ❤️</p>
 </body>
 </html>
