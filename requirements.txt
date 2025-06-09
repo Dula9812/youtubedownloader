@@ -1,2 +1,2 @@
-flask
-pytube
+Flask
+yt-dlp
