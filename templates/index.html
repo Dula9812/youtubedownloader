@@ -1,21 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>YouTube to MP3/MP4 Converter</title>
-  <style>
-    body { font-family: Arial; text-align: center; margin-top: 50px; }
-    input, select, button { padding: 10px; margin: 10px; font-size: 16px; }
-  </style>
+    <meta charset="UTF-8" />
+    <title>YouTube to MP3/MP4 Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            width: 380px;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-  <h2>YouTube to MP3/MP4 Converter</h2>
-  <form method="POST">
-    <input type="text" name="youtube_url" placeholder="Enter YouTube URL" size="50" required><br>
-    <select name="format">
-      <option value="mp3">MP3</option>
-      <option value="mp4">MP4</option>
-    </select><br>
-    <button type="submit">Convert</button>
-  </form>
+    <div class="container">
+        <h1>YouTube to MP3/MP4</h1>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="POST" action="/">
+            <input type="text" name="youtube_url" placeholder="Paste YouTube URL here" required />
+            <select name="format" required>
+                <option value="mp3">MP3 (Audio)</option>
+                <option value="mp4">MP4 (Video)</option>
+            </select>
+            <button type="submit">Convert</button>
+        </form>
+    </div>
 </body>
 </html>
