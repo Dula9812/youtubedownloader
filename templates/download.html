@@ -1,62 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
     <title>Download Ready</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #e6f0ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background: white;
-            padding: 30px 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 360px;
-        }
-        h2 {
-            color: #007BFF;
-            margin-bottom: 20px;
-        }
-        a.button {
-            display: inline-block;
-            padding: 12px 28px;
-            font-size: 18px;
-            color: white;
-            background-color: #007BFF;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            margin-bottom: 15px;
-        }
-        a.button:hover {
-            background-color: #0056b3;
-        }
-        a.secondary {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #007BFF;
-            font-weight: 600;
-        }
-        a.secondary:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
-<body>
-    <div class="container">
-        <h2>Your file is ready to download!</h2>
-        <a href="{{ url_for('download_file', filename=filename) }}" class="button" target="_blank">Download Now</a>
-        <br/>
-        <a href="{{ url_for('index') }}" class="secondary">Convert Another URL</a>
-    </div>
+<body style="text-align:center; font-family:sans-serif;">
+    <h2>🎉 Your file is ready!</h2>
+    <a href="{{ url_for('download_file', filename=filename) }}">
+        <button style="padding:10px 20px; font-size:16px;">Click to Download</button>
+    </a>
+    <br><br>
+    <a href="{{ url_for('index') }}">Short another YouTube Link</a>
 </body>
 </html>
