@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Download Ready</title>
+  <title>Download File</title>
 </head>
-<body style="text-align:center; font-family:sans-serif;">
-    <h2>🎉 Your file is ready!</h2>
-    <a href="{{ url_for('download_file', filename=filename) }}">
-        <button style="padding:10px 20px; font-size:16px;">Click to Download</button>
-    </a>
-    <br><br>
-    <a href="{{ url_for('index') }}">Short another YouTube Link</a>
+<body>
+  <h2>✅ Your file is ready</h2>
+  <a href="/download/{{ filename }}">Download</a>
+  <br><br>
+  <a href="/">Convert another</a>
 </body>
 </html>
