@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_file, redirect, url_for
+from flask import Flask, request, render_template, send_file, url_for
 from pytube import YouTube
 import os
 
@@ -8,6 +8,7 @@ os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    error = None
     if request.method == 'POST':
         url = request.form['youtube_url']
         format_type = request.form['format']
@@ -26,14 +27,13 @@ def index():
             filename = os.path.basename(new_file)
             return render_template('download.html', filename=filename)
         except Exception as e:
-            return render_template('index.html', error=str(e))
-    return render_template('index.html')
+            error = str(e)
+    return render_template('index.html', error=error)
 
 @app.route('/download/<filename>')
 def download_file(filename):
-    ad_url = "https://databoilrecommendation.com/uz2vchu6id?key=28565a3b0fd6701ddb0dffa3e9e84cb8"  # Your Adsterra link here
-    file_url = url_for('serve_file', filename=filename)
-    return render_template("ad_redirect.html", ad_url=ad_url, file_url=file_url)
+    ad_url = "https://databoilrecommendation.com/uz2vchu6id?key=28565a3b0fd6701ddb0dffa3e9e84cb8"
+    return render_template("ad_redirect.html", ad_url=ad_url, file_url=url_for('serve_file', filename=filename))
 
 @app.route('/file/<filename>')
 def serve_file(filename):
@@ -42,4 +42,4 @@ def serve_file(filename):
 if __name__ == '__main__':
     import os
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port)
